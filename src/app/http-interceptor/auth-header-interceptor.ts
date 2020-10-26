@@ -22,9 +22,9 @@ export class AuthHeaderInterceptor implements HttpInterceptor {
     //Modify Headers
     this.spinner.startSpinner();
 
-    const authToken = 'My Auth Token';
+    const authToken = localStorage.getItem('userToken');
     const authReq = req.clone({
-      setHeaders: { Authorization: authToken },
+      setHeaders: { Authorization: `Token: ${authToken}`},
     });
 
     return next.handle(authReq).pipe(

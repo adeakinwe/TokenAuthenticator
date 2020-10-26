@@ -1,0 +1,39 @@
+input[type=text][type=password]{
+  width: 100%;
+  border: 2px solid grey;
+  border-radius: 4px;
+  margin: 8px 0;
+  outline: none;
+  padding: 8px;
+  box-sizing: border-box;
+  transition: 3s;
+}
+
+
+input[type=text][type=password]:focus {
+  border-color: dodgerblue;
+  box-shadow: 0 0 8px 0 dodgerblue;
+}
+
+
+.inputWithIcon input[type=text][type=password]{
+  padding-left: 40px;
+}
+
+
+.inputWithIcon {
+  position: relative;
+}
+
+.inputWithIcon i {
+  position: absolute;
+  left: 0;
+  top: 4px;
+  padding: 7px 8px;
+  color: #aaa;
+  transition: .3s
+}
+
+.inputWithIcon input:focus + i {
+  color: dodgerblue;
+}

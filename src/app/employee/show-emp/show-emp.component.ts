@@ -8,10 +8,17 @@ import { SharedService } from 'src/app/shared.service';
 })
 export class ShowEmpComponent implements OnInit {
   employees: any[];
+  claims: any;
 
   modalTitle:string;
   emp:any;
   addEditEmp:boolean = false;
+
+  empIdFilter:string='';
+  empNameFilter:string='';
+  empDeptFilter:string='';
+  empDateFilter:string='';
+  empListNoFilter:any=[];
 
     constructor(private ss: SharedService) { }
 
@@ -54,6 +61,40 @@ export class ShowEmpComponent implements OnInit {
     getEmployees(){
       this.ss.getAllEmp().subscribe( (emp) => {
         this.employees = emp;
+      })
+    }
+
+    filterEmp(){
+      var EmpIdFilter = this.empIdFilter;
+      var EmpNameFilter = this.empNameFilter;
+      var EmpDeptFilter = this.empDeptFilter;
+      var EmpDateFilter = this.empDateFilter;
+
+      this.employees = this.empListNoFilter.filter((fl) =>{
+        return fl.EmployeeId.toString().toLowerCase().includes(
+          EmpIdFilter.toString().trim().toLowerCase()
+        ) &&
+        fl.EmployeeName.toString().toLowerCase().includes(
+          EmpNameFilter.toString().trim().toLowerCase()
+          )
+          &&
+          fl.Department.toString().toLowerCase().includes(
+            EmpDeptFilter.toString().trim().toLowerCase()
+            )
+            &&fl.DateOfJoining.toString().toLowerCase().includes(
+              EmpDateFilter.toString().trim().toLowerCase()
+              )
+      })
+    }
+
+    sortEmp(prop,asc){
+      this.employees = this.empListNoFilter.sort((a,b)=>{
+        if(asc){
+          return (a[prop] > b[prop]) ? 1 : ((a[prop] < b[prop]) ? -1 : 0);
+        }
+        else{
+          return (b[prop] > a[prop]) ? 1 : ((b[prop] < a[prop]) ? -1 : 0);
+        }
       })
     }
 }

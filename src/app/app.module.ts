@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { CommonModule } from "@angular/common";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,9 +14,15 @@ import { EmployeeComponent } from './employee/employee.component';
 import { SharedService } from './shared.service';
 
 import { HttpClientModule } from "@angular/common/http";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { FormsModule} from "@angular/forms";
 import { httpInterceptProviders } from './http-interceptor';
 import { SpinnerComponent } from './spinner/spinner.component';
+import { UserComponent } from './user/user.component';
+import { LoginComponent } from './user/login/login.component';
+import { RegisterComponent } from './user/register/register.component';
+import { UserService } from './user/user.service';
+import { HeaderComponent } from './header/header.component';
+import { AuthGuard } from './http-interceptor/auth-guard.guard';
 
 @NgModule({
   declarations: [
@@ -25,17 +33,24 @@ import { SpinnerComponent } from './spinner/spinner.component';
     AddEditEmpComponent,
     ShowEmpComponent,
     EmployeeComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    UserComponent,
+    LoginComponent,
+    RegisterComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    CommonModule,
+    BrowserAnimationsModule,
   ],
   providers: [
     SharedService,
+    UserService,
+    AuthGuard,
     httpInterceptProviders
   ],
   bootstrap: [AppComponent]

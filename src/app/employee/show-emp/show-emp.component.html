@@ -10,7 +10,6 @@
 >
   Add Employee
 </button>
-
 <!-- Modal -->
 <div
   class="modal fade"
@@ -44,10 +43,71 @@
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">EmployeeId</th>
-      <th scope="col">EmployeeName</th>
-      <th scope="col">Department</th>
-      <th scope="col">DateOfJoining</th>
+      <th scope="col">
+        <div class="d-flex flex-row">
+          <input
+            class="form-control"
+            [(ngModel)]="empIdFilter"
+            (keyup)="filterEmp()"
+            placeholder="Filter"
+          />
+          <button class="btn btn-light" type="button" (click)="sortEmp('EmployeeId',true)">
+            <i class="fa fa-arrow-up"></i>
+          </button>
+          <button class="btn btn-light" type="button" (click)="sortEmp('EmployeeId',false)">
+            <i class="fa fa-arrow-down"></i>
+          </button>
+        </div>
+        EmployeeId
+      </th>
+      <th scope="col">
+        <div class="d-flex flex-row">
+          <input
+            class="form-control"
+            [(ngModel)]="empNameFilter"
+            (keyup)="filterEmp()"
+            placeholder="Filter"
+          />
+          <button class="btn btn-light" type="button" (click)="sortEmp('EmployeeId',true)">
+            <i class="fa fa-arrow-up"></i>
+          </button>
+          <button class="btn btn-light" type="button" (click)="sortEmp('EmployeeId',false)">
+            <i class="fa fa-arrow-down"></i>
+          </button>
+        </div>
+        EmployeeName</th>
+      <th scope="col">
+        <div class="d-flex flex-row">
+          <input
+            class="form-control"
+            [(ngModel)]="empDeptFilter"
+            (keyup)="filterEmp()"
+            placeholder="Filter"
+          />
+          <button class="btn btn-light" type="button" (click)="sortEmp('EmployeeId',true)">
+            <i class="fa fa-arrow-up"></i>
+          </button>
+          <button class="btn btn-light" type="button" (click)="sortEmp('EmployeeId',false)">
+            <i class="fa fa-arrow-down"></i>
+          </button>
+        </div>
+        Department</th>
+      <th scope="col">
+        <div class="d-flex flex-row">
+          <input
+            class="form-control"
+            [(ngModel)]="empDateFilter"
+            (keyup)="filterEmp()"
+            placeholder="Filter"
+          />
+          <button class="btn btn-light" type="button" (click)="sortEmp('EmployeeId',true)">
+            <i class="fa fa-arrow-up"></i>
+          </button>
+          <button class="btn btn-light" type="button" (click)="sortEmp('EmployeeId',false)">
+            <i class="fa fa-arrow-down"></i>
+          </button>
+        </div>
+        DateOfJoining</th>
       <th scope="col">Edit/Delete</th>
     </tr>
   </thead>
